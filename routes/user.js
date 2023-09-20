@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET sign-up form page. */
-router.get('/sign-up', function(req, res, next) {
-  res.render('sign_up_form');
-});
+const users_controller = require('../controllers/users');
 
-router.post('/sign-up', function (req, res, next) {
-  res.send('Sign up POST');
-})
+/* GET sign-up form page. */
+router.get('/sign-up', users_controller.sign_up_get);
+
+router.post('/sign-up', users_controller.sign_up_post)
 
 module.exports = router;
