@@ -26,8 +26,9 @@ exports.sign_up_post = [
     .isLength({ min: 3 })
     .escape()
     .custom(async (value) => {
+      console.log(value);
       const username = await User.find({ username: value }).exec();
-      if (username) {
+      if (username.length) {
         throw new Error('This username is already in use')
       }
     }),

@@ -22,7 +22,10 @@ block content
         else
           each message in messages
             div.message-container
-              div.message_user= message.author.username
+              if (currentUser && currentUser.membership === 'Platinum')
+                div.message_user= message.author.username
               div.message_text= message.text
-              div.message_timestamp= message.timestamp_formatted
-    a.new-message_link(href='/new') New message
+              if (currentUser && currentUser.membership === 'Platinum')
+                div.message_timestamp= message.timestamp_formatted
+    if currentUser
+      a.new-message_link(href='/message/new') New message
