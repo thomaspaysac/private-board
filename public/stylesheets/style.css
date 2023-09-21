@@ -16,17 +16,18 @@ a:active {
   text-decoration: underline;
 }
 
-img {
-  width: 32px;
-  height: 32px; 
-}
-
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px;
   background: #ffffff9f;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .nav-links {

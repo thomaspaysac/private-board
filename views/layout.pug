@@ -5,10 +5,11 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     nav
-      h1
-        a(href='/') Space Swirl Lodge
+      div.nav-title
+        h1
+          a(href='/') Space Swirl Lodge
         a(href='https://github.com/stagnant-sys/private-board')
-          img(src='/public/images/github-mark.png' alt='') 
+          img(src='/public/images/github-mark.png' alt='' style='width:24px; height:24px;') 
       div.nav-links
         if currentUser 
           p Welcome, #{currentUser.username} 
