@@ -1,14 +1,8 @@
 extends layout
 
 block content
-  h1= title
-
-  if currentUser 
-    p Be welcome, #{currentUser.username}.
-    div 
-      a(href='/user/log-out') Log out
-  else 
-    p
+  if (!currentUser)
+    p.disclaimer
       a(href='/user/log-in') Log in
       |  or 
       a(href='/user/sign-up') Sign up 
@@ -22,11 +16,9 @@ block content
         else
           each message in messages
             div.message-container
-              if (currentUser && currentUser.membership === 'Platinum')
-                div.message_user= message.author.username
               div.message_title #[strong #{message.title}]
               div.message_text= message.text
               if (currentUser && currentUser.membership === 'Platinum')
-                div.message_timestamp= message.timestamp_formatted
+                div.message_timestamp posted by #{message.author.username} at #{message.timestamp_formatted}
     if currentUser
       a.new-message_link(href='/message/new') New message

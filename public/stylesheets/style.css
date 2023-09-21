@@ -1,8 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url('../images/background.jpg');
+  background-size: cover;
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #ffffff9f;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+main {
+  padding: 32px;
+}
+
+h1 {
+  font-family: "Lobster", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  color: #fffffe;
+  font-weight: 400;
+  margin: 0;
+}
+
+h1>a {
+  color: #303030;
+}
+
+h2 {
+  color: #fffffe;
+  font-weight: 700;
+}
+
+.disclaimer {
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.presentation-text {
+  color: #272343;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.message-display_outer {
+  border: 5px solid #272343;
+  border-radius: 7px;
+  height: 60vh;
+  background-color: #bae8e8;
+  margin: 32px 0;
+  padding: 12px;
+}
+
+.messages-display {
+  border: 1px solid #27234377;
+  border-radius: 4px;
+  overflow-y: scroll;
+  background-color: #fffffe;
+  height: 100%;
+}
+
+.message-container {
+  padding: 16px;
+  margin: 0 12px;
+  border-bottom: 1px solid #bae8e8b1;
+}
+
+.message-container div {
+  margin: 4px 0;
+}
+
+.message_user {
+  font-weight: 700;
+  color: #272343;
+}
+
+.message_text {
+  color: #2d334a;
+}
+
+.message_timestamp {
+  color: #2d334a98;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.input-group {
+  margin-bottom: 8px;
+}
+
+label {
+  color: #fffffe;
+}
+
+.new-message_link,
+input[type='submit'] {
+  background-color: #ffd803;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  color: #272343;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.new-message_link:hover,
+.new-message_link:active,
+input[type='submit']:hover,
+input[type='submit']:active {
+  cursor: pointer;
+  background-color: #e6b802;
 }

@@ -5,11 +5,16 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     nav
-      a(href='/') Index
-      if currentUser 
-        a(href='/user/log-out') Log out
-        a(href='/user/upgrade') Upgrade your account
-      else
-        a(href='/user/log-in') Log in 
-        a(href=('/user/sign-up')) Sign up
-    block content
+      h1
+        a(href='/') PrivateBoard
+      div.nav-links
+        if currentUser 
+          p Welcome, #{currentUser.username}:
+          a(href='/user/log-out') #[strong Log out]
+          if (currentUser.membership !== 'Platinum')
+            a(href='/user/upgrade') #[strong Upgrade your account]
+        else
+          a(href='/user/log-in') #[strong Log in]
+          a(href=('/user/sign-up')) #[strong Sign up]
+    main
+      block content
