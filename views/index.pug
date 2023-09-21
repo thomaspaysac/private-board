@@ -24,4 +24,5 @@ block content
             div.message-container
               div.message_user= message.author.username
               div.message_text= message.text
+              div.message_timestamp= message.timestamp_formatted
     a.new-message_link(href='/new') New message
