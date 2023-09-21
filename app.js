@@ -65,6 +65,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // middleware
+app.use(express.static('public'));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
