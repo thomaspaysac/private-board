@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "serverstart": "SET DEBUG=<projet>:* & npm run devstart"
+    "serverstart": "SET DEBUG=private-board:* & npm run devstart"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

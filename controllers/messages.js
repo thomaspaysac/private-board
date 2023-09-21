@@ -21,24 +21,23 @@ exports.new_message_get = asyncHandler(async (req, res, next) => {
   })
 })
 
-exports.new_message_post = [
-  
+exports.new_message_post = [  
   body('message_title', 'Invalid title')
     .trim()
-    .isLength({ min: 2, max: 50 })
+    .isLength({ min: 2, max: 100 })
     .escape()
     .unescape("&#39;", "'"),
   body('message_text', 'Invalid message')
     .trim()
-    .isLength({min: 2, max: 100})
+    .isLength({min: 2, max: 200})
     .escape()
     .unescape("&#39;", "'"),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     const message = new Message({
-      title: req.body.message_title.toString(),
-      text: req.body.message_text.toString(),
+      title: req.body.message_title,
+      text: req.body.message_text,
       author: req.user,
       timestamp: Date.now(),
     });

@@ -10,7 +10,7 @@ block content
         input#message_title(type='text' minlength='2' maxlength='100' name='message_title' value=(message===undefined ? '' : message.title))
       div.input-group
         label(for='message_text') Message: 
-        input#message_text(type="text" minlength='2' maxlength='100' name='message_text' value=(message===undefined ? '' : message.text))
+        textarea#message_text(type="text" minlength='2' maxlength='200' name='message_text' value=(message===undefined ? '' : message.text))
       div
         input(type="submit", value="Send message")
   
