@@ -17,8 +17,11 @@ block content
           each message in messages
             div.message-container
               div.message_title #[strong #{message.title}]
-              div.message_text= message.text
+              div.message_text= message.text 
               if (currentUser && currentUser.membership === 'Platinum')
-                div.message_timestamp posted by #{message.author.username} at #{message.timestamp_formatted}
+                div.message_timestamp posted by #{message.author.username}
+                  if (message.author.membership === 'Platinum')
+                    |🌟
+                  |  on #{message.timestamp_formatted}
     if currentUser
       a.new-message_link(href='/message/new') New message

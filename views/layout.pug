@@ -6,13 +6,16 @@ html
   body
     nav
       h1
-        a(href='/') PrivateBoard
+        a(href='/') Space Swirl Lodge
       div.nav-links
         if currentUser 
-          p Welcome, #{currentUser.username}:
+          p Welcome, #{currentUser.username} 
+            if(currentUser.membership === 'Platinum')
+              |🌟
+            |:
           a(href='/user/log-out') #[strong Log out]
           if (currentUser.membership !== 'Platinum')
-            a(href='/user/upgrade') #[strong Upgrade your account]
+            a(href='/user/upgrade') #[strong 🌟 Upgrade your account]
         else
           a(href='/user/log-in') #[strong Log in]
           a(href=('/user/sign-up')) #[strong Sign up]

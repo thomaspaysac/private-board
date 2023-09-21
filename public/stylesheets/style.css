@@ -132,3 +132,7 @@ input[type='submit']:active {
   cursor: pointer;
   background-color: #e6b802;
 }
+
+li {
+  color: #fffffe;
+}

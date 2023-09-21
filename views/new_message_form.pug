@@ -1,12 +1,12 @@
 extends layout 
 
 block content 
-  h1= title
+  h2= title
 
   if (currentUser)
     form(action="" method='POST')
       div.input-group
-        label(for='message_title') Message title:
+        label(for='message_title') Message title: 
         input#message_title(type='text' minlength='2' maxlength='100' name='message_title' value=(message===undefined ? '' : message.title))
       div.input-group
         label(for='message_text') Message: 

@@ -108,7 +108,7 @@ exports.upgrade_form_post = [
     .trim()
     .custom((value) => {
       if (value !== process.env.UPGRADE_PASSWORD) {
-        throw new Error('Wrong password')
+        throw new Error('Wrong password: have you tried \'Sausage Party\' ?');
       } else {
         return true;
       };
@@ -125,7 +125,7 @@ exports.upgrade_form_post = [
     } else {
       const user = req.user;
       await User.findOneAndUpdate({_id: user._id}, { membership: 'Platinum' });
-      res.redirect('/');
+      res.render('upgrade_confirm');
     }
   })
 ]

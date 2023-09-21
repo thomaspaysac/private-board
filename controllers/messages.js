@@ -11,7 +11,6 @@ exports.index_get = asyncHandler(async (req, res, next) => {
     .populate('author')
     .exec();
   res.render('index', { 
-    title: 'Private Board',
     messages });
 });
 
