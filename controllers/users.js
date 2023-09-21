@@ -2,9 +2,12 @@ const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const passport = require("passport");
 const bcrypt = require('bcryptjs');
+require('dotenv').config()
 
 const User = require('../models/user');
 
+
+// Sign up page
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
   res.render('sign_up_form', { title: 'Sign up' });
 })
@@ -71,7 +74,10 @@ exports.sign_up_post = [
   })
 ];
 
+
+// Log in page
 exports.log_in_get = asyncHandler((req, res, next) => {
+  
   res.render('log_in_form', { title: 'Log in' });
 });
 
@@ -89,3 +95,36 @@ exports.log_out_get = asyncHandler((req, res, next) => {
     res.redirect("/");
   });
 })
+
+
+// Upgrade page
+exports.upgrade_form_get = asyncHandler((req, res, next) => {
+  res.render('upgrade_form', { title: 'Upgrade your account' })
+})
+
+exports.upgrade_form_post = [
+  body('upgrade_password')
+    .trim()
+    .custom((value) => {
+      if (value !== process.env.UPGRADE_PASSWORD) {
+        throw new Error('Wrong password')
+      } else {
+        return true;
+      };
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('upgrade_form', {
+        title: 'Upgrade your account',
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      const user = req.user;
+      await User.findOneAndUpdate({_id: user._id}, { membership: 'Platinum' });
+      res.redirect('/');
+    }
+  })
+]

@@ -13,4 +13,15 @@ block content
       |  or 
       a(href='/user/sign-up') Sign up 
       |  to start using the board.
-  
+
+  div.background
+    div.message-display_outer
+      div.messages-display
+        if messages.length === 0
+          div No message yet. Be the first! 
+        else
+          each message in messages
+            div.message-container
+              div.message_user= message.author.username
+              div.message_text= message.text
+    a.new-message_link(href='/new') New message

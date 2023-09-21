@@ -49,7 +49,6 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
-
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);

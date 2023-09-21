@@ -1,0 +1,25 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  if currentUser
+    if (currentUser.membership === 'Platinum')
+      div You're already a Platinum member.
+
+    else
+      div
+        form(method='POST' action='')
+          div 
+            label(for='upgrade_password') Secret password: 
+            input#upgrade_password(type='password' name='upgrade_password')
+          input(type='submit' value='Submit')
+
+    if errors
+      hr
+      ul
+        each error in errors
+          li!= error.msg
+  
+  else 
+    p You first need to log in.
