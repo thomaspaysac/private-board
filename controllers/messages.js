@@ -14,3 +14,21 @@ exports.index_get = asyncHandler(async (req, res, next) => {
     title: 'Private Board',
     messages });
 });
+
+// New message page
+exports.new_message_get = asyncHandler(async (req, res, next) => {
+  res.render('new_message_form', {
+    title: 'New message'
+  })
+})
+
+exports.new_message_post = [
+  body('message', 'Invalid message')
+    .trim()
+    .isLength({min: 2, max: 100})
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    // A FAIRE
+  })
+]

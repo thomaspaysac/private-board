@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1= title
+
+  if (currentUser)
+    form(action="" method='POST')
+      div.input-group
+        label(for='message') Message: 
+        input(type="text" minlength='2' maxlength='100' id='message' name='message' require='true')
+      div
+        input(type="submit", value="Send message")
+  
+  else
+    p You first need to log in.
