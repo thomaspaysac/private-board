@@ -25,11 +25,13 @@ exports.new_message_post = [
   body('message_title', 'Invalid title')
     .trim()
     .isLength({ min: 2, max: 50 })
-    .escape(),
+    .escape()
+    .unescape("&#39;", "'"),
   body('message_text', 'Invalid message')
     .trim()
     .isLength({min: 2, max: 100})
-    .escape(),
+    .escape()
+    .unescape("&#39;", "'"),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -53,3 +55,13 @@ exports.new_message_post = [
     }
   })
 ]
+
+exports.message_delete_post = asyncHandler(async (req, res, next) => {
+  const message = await Message.findById(req.body.messageid).exec();
+  if (message === null) {
+    res.redirect('/');
+  } else {
+    await Message.findByIdAndRemove(req.body.messageid)
+    res.redirect('/');
+  }
+})

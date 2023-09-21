@@ -16,6 +16,10 @@ block content
         else
           each message in messages
             div.message-container
+              if (currentUser&& currentUser.role === 'admin')
+                form(method='POST' action='/message/delete')
+                  input#messageid(type='hidden' name='messageid' required='true' value=message._id)
+                  button.delete_button(type='submit') -
               div.message_title #[strong #{message.title}]
               div.message_text= message.text 
               if (currentUser && currentUser.membership === 'Platinum')
