@@ -23,12 +23,34 @@ exports.new_message_get = asyncHandler(async (req, res, next) => {
 })
 
 exports.new_message_post = [
-  body('message', 'Invalid message')
+  body('message_title', 'Invalid title')
+    .trim()
+    .isLength({ min: 2, max: 50 })
+    .escape(),
+  body('message_text', 'Invalid message')
     .trim()
     .isLength({min: 2, max: 100})
     .escape(),
 
   asyncHandler(async (req, res, next) => {
-    // A FAIRE
+    const errors = validationResult(req);
+    const message = new Message({
+      title: req.body.message_title,
+      text: req.body.message_text,
+      author: req.user,
+      timestamp: Date.now(),
+    });
+
+    if (!errors.isEmpty()) {
+      res.render(('new_message_form', {
+        title: 'New message',
+        message,
+        errors: errors.array(),
+      }));
+      return;
+    } else {
+      await message.save();
+      res.redirect('/');
+    }
   })
 ]

@@ -24,6 +24,7 @@ block content
             div.message-container
               if (currentUser && currentUser.membership === 'Platinum')
                 div.message_user= message.author.username
+              div.message_title #[strong #{message.title}]
               div.message_text= message.text
               if (currentUser && currentUser.membership === 'Platinum')
                 div.message_timestamp= message.timestamp_formatted

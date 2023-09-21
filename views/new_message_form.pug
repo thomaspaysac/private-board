@@ -6,8 +6,11 @@ block content
   if (currentUser)
     form(action="" method='POST')
       div.input-group
-        label(for='message') Message: 
-        input(type="text" minlength='2' maxlength='100' id='message' name='message' require='true')
+        label(for='message_title') Message title:
+        input#message_title(type='text' minlength='2' maxlength='100' name='message_title' value=(message===undefined ? '' : message.title))
+      div.input-group
+        label(for='message_text') Message: 
+        input#message_text(type="text" minlength='2' maxlength='100' name='message_text' value=(message===undefined ? '' : message.text))
       div
         input(type="submit", value="Send message")
   
