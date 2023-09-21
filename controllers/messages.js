@@ -22,6 +22,7 @@ exports.new_message_get = asyncHandler(async (req, res, next) => {
 })
 
 exports.new_message_post = [
+  
   body('message_title', 'Invalid title')
     .trim()
     .isLength({ min: 2, max: 50 })
@@ -36,8 +37,8 @@ exports.new_message_post = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     const message = new Message({
-      title: req.body.message_title,
-      text: req.body.message_text,
+      title: req.body.message_title.toString(),
+      text: req.body.message_text.toString(),
       author: req.user,
       timestamp: Date.now(),
     });
